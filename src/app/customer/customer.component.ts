@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CustomerInterface } from '../interfaces/customer.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { customerService } from '../services/customer.service';
-import { ToastrService } from 'ngx-toastr'; 
-import { NgbAlertModule, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-customer',
   standalone: true,
-  imports: [NgbDatepickerModule, NgbAlertModule, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule,ReactiveFormsModule, CommonModule],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.scss'
 })
@@ -27,6 +27,7 @@ export class CustomerComponent implements OnDestroy {
   birthDateFormControl: FormControl;
   cityFormControl: FormControl;
   stateFormControl: FormControl;
+  gender: FormControl;
   //countryFormControl: FormControl;
 
   subscription: Subscription;
@@ -34,14 +35,13 @@ export class CustomerComponent implements OnDestroy {
 
   countries: string[] = ['USA', 'UK', 'Canada', 'India'];
   default: string = 'India';
-  
-  model: NgbDateStruct;
-  date: { year: number; month: number };
+
 
   constructor(private fb: FormBuilder, private service: customerService, private router: Router, private toastr: ToastrService) {
     //this.customerForm.controls['country'].setValue(this.default, {onlySelf: true});
     this.customerForm = new FormGroup({
-      country: new FormControl(null)
+      country: new FormControl(null),
+      gender: new FormControl('', Validators.required)
     });
     this.customerForm.controls['country'].setValue(this.default, { onlySelf: true });
   }
@@ -56,6 +56,7 @@ export class CustomerComponent implements OnDestroy {
     this.birthDateFormControl = new FormControl(null, [Validators.required]);
     this.cityFormControl = new FormControl(null, [Validators.required, Validators.minLength(2)]);
     this.stateFormControl = new FormControl(null, [Validators.required, Validators.minLength(2)]);
+    //this.genderFormControl = new FormControl(null, [Validators.required, Validators.minLength(1)]);
     //this.countryFormControl = new FormControl(null, [Validators.required, Validators.minLength(2)]);
 
     this.customerForm = new FormGroup({
@@ -75,8 +76,13 @@ export class CustomerComponent implements OnDestroy {
       zipcode: this.zipcodeFormControl,
       country: this.customerForm.controls['country'],
       phone: this.phoneFormControl,
-      birthDate: this.birthDateFormControl
+      birthDate: this.birthDateFormControl,
+      gender: this.customerForm.controls['gender']
     })
+  }
+
+  get f() {
+    return this.customerForm.controls;
   }
 
   onSubmitForm() {
@@ -84,6 +90,7 @@ export class CustomerComponent implements OnDestroy {
     if (this.customerForm.valid) {
       this.subscription = this.service.customerCreation(this.customerForm.value).subscribe(res => {
         console.log('Created successfully');
+        this.resetForm();
         this.toastr.success('Customer', 'Created successfully');
         //this.resetForm(); 
       })

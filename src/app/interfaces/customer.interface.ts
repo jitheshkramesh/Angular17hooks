@@ -10,9 +10,12 @@ export interface CustomerInterface {
     country: string,
     phone: string,
     birthDate: Date,
+    gender:string,
 
     createdDate: Date,
     createdId: number,
     updatedId: number,
-    updatedDate: Date
+    updatedDate: Date,
+
+
 }

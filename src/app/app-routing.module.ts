@@ -28,7 +28,7 @@ import { AncourseComponent } from './animation/ancourse/ancourse.component';
 import { CustomerComponent } from './customer/customer.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent, pathMatch: 'full' },
   //{ path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent , canActivate: [AuthGuardService] },
   { path: 'Aboutus', component: AboutComponent , canActivate: [AuthGuardService] },
