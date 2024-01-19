@@ -6,11 +6,12 @@ import { CustomerInterface } from '../interfaces/customer.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { customerService } from '../services/customer.service';
 import { ToastrService } from 'ngx-toastr'; 
+import { NgbAlertModule, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-customer',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [NgbDatepickerModule, NgbAlertModule, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.scss'
 })
@@ -33,6 +34,9 @@ export class CustomerComponent implements OnDestroy {
 
   countries: string[] = ['USA', 'UK', 'Canada', 'India'];
   default: string = 'India';
+  
+  model: NgbDateStruct;
+  date: { year: number; month: number };
 
   constructor(private fb: FormBuilder, private service: customerService, private router: Router, private toastr: ToastrService) {
     //this.customerForm.controls['country'].setValue(this.default, {onlySelf: true});

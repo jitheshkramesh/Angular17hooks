@@ -33,7 +33,11 @@
                 </div>
                 <div class="form-group">
                     <label>birthDate</label>
-                    <input type="email" class="form-control" [formControl]="birthDateFormControl" id="birthDate"
+                    <input type="email" class="form-control" 
+                    [formControl]="birthDateFormControl" id="birthDate"
+                    [(ngModel)]="model"
+				ngbDatepicker
+				#d="ngbDatepicker"
                         placeholder="Enter your birthDate" />
                 </div>
                 <div class="form-group">
