@@ -1,0 +1,29 @@
+<div class="loginLayout">
+    <div class="container mt-4 w-50 p-3">
+        <div class="alert alert-primary text-center">
+            <div class="alert alert-info rounded-4 text-left" *ngIf="invalidData">
+                <div class="alert alert-danger rounded-4">Error Your form values</div>
+            </div>
+            <h2 class="" pt-2>Please fill your details</h2>
+            <form class="pt-3" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="email" class="form-control" [formControl]="userNameFormControl" id="username"
+                        placeholder="Enter your email id" />
+                    <small class="form-text text-muted">We'll never remember your Email Id</small>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" [formControl]="passwordFormControl" id="password"
+                        placeholder="Enter your Password" />
+                    <small class="form-text text-muted">We'll never remember your Password</small>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-sm btn-primary mt-4 m-1" value="Submit" />
+                    <input type="button" class="btn btn-sm btn-danger mt-4 m-1" (click)="resetForm()" value="Reset" />
+                    <input type="button" class="btn btn-sm btn-info mt-4 m-1" (click)="registerForm()" value="Register" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

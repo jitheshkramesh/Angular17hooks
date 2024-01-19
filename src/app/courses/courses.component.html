@@ -1,0 +1,13 @@
+<div class="container">
+    <div>All Courses</div>
+    <div *ngFor="let course of courses">
+        <div class="card">
+            <img src="assets/images/courses/{{course.image}}" alt="Denim Jeans" style="width:100%">
+            <h1>{{course.name}}</h1>
+            <p class="price">${{course.price}}</p>
+            <p>{{course.description}}</p>
+            <p>{{course.author}}</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+    </div>
+</div>

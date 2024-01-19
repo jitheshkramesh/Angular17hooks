@@ -1,0 +1,16 @@
+<!-- <div style="text-align: center;">
+  <h1>Welcome to Angular 16 hooks tutorials</h1>
+  <div>
+    <button (click)="increment()">Increment</button>
+    <button (click)="decrement()">Decrement</button>
+    <button (click)="add()">Add</button>
+    <app-child [myCounter]="counter" [secondValue]="secondValue" [numbers]="numbers">
+      Hello, this is from Parent Component
+    </app-child> 
+  </div>
+</div> -->
+<div class="main-container">
+<app-header></app-header>
+<router-outlet></router-outlet>  
+<div class="spinner" *ngIf="displayLoadingIndicator"></div>
+</div>

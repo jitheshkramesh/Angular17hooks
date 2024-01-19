@@ -1,0 +1,13 @@
+<div class="container">
+    <h2>Course List</h2>
+    <div>
+        <app-course-list *ngFor="let course of courses; let i = index" 
+        [course]="course" [ngClass]="{ active: course.status === 'false' }"
+        [ngClass]="{ selected: selectedCourseIndex === i }"
+        (statusUpdated)="onStatusUpdate($event, i)" 
+        (courseDelete) = "oncourseDelete(i)"
+        (click)="onCourseSelected(i)"
+            ></app-course-list>
+            <!-- (click)="course.isActive = !course.isActive" -->
+    </div>
+</div>

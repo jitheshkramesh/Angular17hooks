@@ -1,0 +1,26 @@
+<div class="container mt-4">
+    <div class="alert alert-primary text-center">
+        <div class="alert alert-info rounded-4 text-left">
+            <div *ngIf="isSuccess$ | async" class="alert alert-success rounded-4">Your form values were saved</div>
+            <div *ngIf="isError$ | async" class="alert alert-danger rounded-4">Error Your form values</div>
+
+        </div>
+        <h2 class="" pt-2>Please fill your details</h2>
+        <form class="pt-3" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="email" class="form-control" [formControl]="userNameFormControl" id="username"
+                    placeholder="Enter your email id" />
+                <small class="form-text text-muted">We'll never remember your Email Id</small>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" [formControl]="passwordFormControl" id="password"
+                    placeholder="Enter your Password" />
+                <small class="form-text text-muted">We'll never remember your Password</small>
+            </div>
+            <input type="submit" class="btn btn-sm btn-primary mt-2" value="Submit" />
+            <input type="button" class="btn btn-sm btn-danger mt-2" (click)="resetForm()" value="Reset" />
+        </form>
+    </div>
+</div>
