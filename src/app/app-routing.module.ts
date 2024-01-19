@@ -25,6 +25,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { CourselistComponent } from './animation/courselist/courselist.component';
 import { AncourseComponent } from './animation/ancourse/ancourse.component';
+import { CustomerComponent } from './customer/customer.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -37,12 +38,13 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'heroP', component: HeroParentComponent , canActivate: [AuthGuardService] },
   { path: 'vehiclelist', component: VehicleShellComponent , canActivate: [AuthGuardService] },
+  { path: 'customer', component: CustomerComponent , canActivate: [AuthGuardService] },
   { path: 'signup', component: UserSignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'user-login', component: UserLoginComponent },
   { path: 'employees', component: EmployeesComponent, canActivate: [AuthGuardService] },
   { path: 'rxjs', component: RxjsComponent, canActivate: [AuthGuardService]  },
-  { path: 'register', component: RegisterComponent , canActivate: [AuthGuardService] },
+  { path: 'register', component: RegisterComponent},
   { path: 'an-course', component: AncourseComponent, canActivate: [AuthGuardService]  },
   { path: 'Contact', component: ContactComponent, canDeactivate: [CanDeactivateGuardService] },
   { path: 'Courses', component: CoursesComponent, canActivate: [AuthGuardService] , resolve: { courses: courseResolveService } },

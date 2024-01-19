@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; 
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { AuthenticationServices } from 'src/app/services/authentication.services';
 
@@ -12,7 +13,7 @@ import { AuthenticationServices } from 'src/app/services/authentication.services
   styleUrls: ['./register.component.scss'],
   imports: [
     FormsModule, ReactiveFormsModule, CommonModule
-  ]
+  ], 
 })
 export class RegisterComponent {
   userForm: FormGroup;
@@ -24,7 +25,10 @@ export class RegisterComponent {
   subscription: Subscription;
   invalidData: boolean = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private service: AuthenticationServices) { }
+  constructor(private fb: FormBuilder, 
+    private router: Router, 
+    private service: AuthenticationServices,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -48,7 +52,7 @@ export class RegisterComponent {
     console.log(this.userForm);
     if (this.userForm.valid) {
       this.subscription = this.service.userRegister(this.userForm.value).subscribe(res => {
-        //this.toastr.success('Please contact admin approval', 'Registration successfully');
+        this.toastr.success('Please contact admin approval', 'Registration successfully');
         this.router.navigate(['login']);
       })
     } else {
@@ -64,10 +68,14 @@ export class RegisterComponent {
   }
 
   ngOnDestroy() {
-    //this.subscription.unsubscribe();
+    this.subscription && this.subscription.unsubscribe();
   }
 
   loginForm() {
     this.router.navigate(['login']);
   }
 }
+function provideAnimations(): import("@angular/core").Provider {
+  throw new Error('Function not implemented.');
+}
+

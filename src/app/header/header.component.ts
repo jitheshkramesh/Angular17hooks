@@ -37,6 +37,7 @@ export class HeaderComponent {
   logout() {
     this.authService.logOut();
     this.authenticated = this.authService.isAuthenticated();
+    this.router.navigate(['login']);
   }
 
   get counter() {

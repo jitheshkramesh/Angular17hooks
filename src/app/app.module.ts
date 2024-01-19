@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { ChildComponent } from './components/child/child.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { CoursesComponent } from './courses/courses.component'; 
+import { CoursesComponent } from './courses/courses.component';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error/error.component';
 import { AuthService } from 'src/app/shared/auth.services';
@@ -51,10 +51,12 @@ import { CartService } from './services/cart.service';
 import { HeadersInterceptor } from './shared/interceptor/headers.interceptor';
 import { LoggingInterceptor } from './shared/interceptor/logging.interceptor';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { EmployeesComponent } from './employees/employees.component'; 
+import { EmployeesComponent } from './employees/employees.component';
 import { CourselistComponent } from './animation/courselist/courselist.component';
 import { AncourseComponent } from './animation/ancourse/ancourse.component';
 // import {percentage} from '../shared/percentage.pipe';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
 
@@ -64,7 +66,7 @@ export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
         ChildComponent,
         HomeComponent,
         AboutComponent,
-        CoursesComponent, 
+        CoursesComponent,
         ContactComponent,
         ErrorComponent,
         StudentComponent,
@@ -79,14 +81,14 @@ export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
         UserLoginComponent,
         HeroParentComponent,
         HeroChildComponent,
-        ProductListComponent, 
+        ProductListComponent,
         VehicleDetailComponent,
         VehicleListComponent,
         VehicleShellComponent,
         RxjsComponent,
-        EmployeesComponent, 
+        EmployeesComponent,
         AncourseComponent,
-        CourselistComponent 
+        CourselistComponent
     ],
     providers: [AuthService, CourseGuardService,
         CanDeactivateGuardService, courseResolveService,
@@ -109,7 +111,9 @@ export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
         PercentagePipe,
         StoreModule.forRoot({ authStore: authReducer }),
         EffectsModule.forRoot(AuthenticationEffects),
-        NgFor, NgIf, DecimalPipe  
-    ],  
+        NgFor, NgIf, DecimalPipe,
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule
+    ],
 })
 export class AppModule { }
