@@ -11,6 +11,7 @@
                     <th class="px-2">lastName</th>
                     <th class="px-2">email</th>
                     <th class="px-2">country</th>
+                    <th class="px-2">gender</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -20,6 +21,7 @@
                     <td class="px-2">{{cust.lastName}}</td>
                     <td class="px-2">{{cust.email}}</td>
                     <td class="px-2">{{cust.country}}</td>
+                    <td class="px-2">{{ cust.gender == 'm' ? 'Male' : cust.gender == 'f' ? 'Female' : 'Not Specified' }}</td>
                     <td class="px-2"><button class="btn btn-primary" (click)="EditClick(cust.id)">Edit</button></td>
                     <td><a routerLink="/customereditTd/{{cust.id}}" class="btn btn-success mt-2">Edit</a></td>
                 </tr>

@@ -3,78 +3,83 @@
         <div class="alert alert-primary text-center">
             <!-- <div class="alert alert-info rounded-4 text-left" *ngIf="invalidData">
                 <div class="alert alert-danger rounded-4">Error Your form values</div>
-            </div> --> 
-            <form class="pt-3" [formGroup]="customerForm" (ngSubmit)="onSubmitForm()">
+            </div> -->
+            <form class="pt-3" [formGroup]="editcustomerForm" (ngSubmit)="onSubmitForm()">
                 <div class="form-group">
                     <label>First Name</label>
-                    <input class="form-control" [formControl]="firstNameFormControl" id="firstName"
+                    <input class="form-control" formControlName="firstNameFormControl" id="firstName"
                         placeholder="Enter your First Name" />
                 </div>
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input class="form-control" [formControl]="lastNameFormControl" id="lastName"
+                    <input class="form-control" formControlName="lastNameFormControl" id="lastName"
                         placeholder="Enter your Last Name" />
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" [formControl]="emailFormControl" id="email"
+                    <input type="email" class="form-control" formControlName="emailFormControl" id="email"
                         placeholder="Enter your email id" />
                 </div>
                 <div class="form-group">
                     <label>Zipcode</label>
-                    <input class="form-control" [formControl]="zipcodeFormControl" id="zipcode"
+                    <input class="form-control" formControlName="zipcodeFormControl" id="zipcode"
                         placeholder="Enter your Zipcode" />
                 </div>
                 <div class="form-group">
                     <label>phone</label>
-                    <input class="form-control" [formControl]="phoneFormControl" id="phone"
+                    <input class="form-control" formControlName="phoneFormControl" id="phone"
                         placeholder="Enter your phone" />
                 </div>
                 <div class="form-group">
                     <label>birthDate</label>
-                    <input type="date" class="form-control" [formControl]="birthDateFormControl" id="birthDate"
+                    <input type="date" class="form-control" 
+                    formControlName="birthDateFormControl" id="birthDate"  
                         placeholder="Enter your birthDate" />
                 </div>
                 <div class="form-group">
                     <label>city</label>
-                    <input class="form-control" [formControl]="cityFormControl" id="city"
+                    <input class="form-control" formControlName="cityFormControl" id="city"
                         placeholder="Enter your city" />
                 </div>
                 <div class="form-group">
                     <label>state</label>
-                    <input class="form-control" [formControl]="stateFormControl" id="state"
+                    <input class="form-control" formControlName="stateFormControl" id="state"
                         placeholder="Enter your state" />
                 </div>
                 <div class="form-group">
                     <label>country</label>
-                    <!-- <input type="email" class="form-control" [formControl]="countryFormControl" id="country"
+                    <!-- <input type="email" class="form-control" formControlName="countryFormControl" id="country"
                         placeholder="Enter your country" /> -->
                 </div>
                 <div class="form-group">
-                    <!-- <select id="country" [formControl]="countryFormControl">
+                    <!-- <select id="country" formControlName="countryFormControl">
                         <option *ngFor="let c of countries" [ngValue]="c">{{ c }}</option>
                     </select> -->
-                    <select id="country" class="form-control" formControlName="country">
+                    <select id="country" class="form-control" formControlName="countryFormControl">
                         <option *ngFor="let c of countries" [ngValue]="c">{{ c }}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="m-2" for="gender">Gender</label> 
-                      <input class="m-2" id="male" type="radio" value="m" name="gender" formControlName="gender">
-                      <label for="male">Male</label>
-                    
-                      <input class="m-2" id="female" type="radio" value="f" name="gender" formControlName="gender">
-                      <label for="female">Female</label>
-                   
-                    <input class="m-2" id="female" type="radio" value="n" name="gender" formControlName="gender">
-                    <label for="female">Not Specified</label> 
-                      
+                    <label class="m-2" for="gender">Gender</label>
+                    <input class="m-2" id="male" type="radio" value="m" name="genderFormControl"
+                        formControlName="genderFormControl">
+                    <label for="male">Male</label>
+
+                    <input class="m-2" id="female" type="radio" value="f" name="genderFormControl"
+                        formControlName="genderFormControl">
+                    <label for="female">Female</label>
+
+                    <input class="m-2" id="female" type="radio" value="n" name="genderFormControl"
+                        formControlName="genderFormControl">
+                    <label for="female">Not Specified</label>
+
                     <!-- <div *ngIf="f.gender.touched && f.gender.invalid" class="alert alert-danger">
                         <div *ngIf="f.gender.errors.required">Name is required.</div>
                     </div> -->
                 </div>
                 <input type="submit" class="btn btn-sm btn-primary mt-2 m-1" value="Submit" />
-                <input type="button" class="btn btn-sm btn-danger mt-2 m-1" (click)="backtoList()" value="Back To List" />
+                <input type="button" class="btn btn-sm btn-danger mt-2 m-1" (click)="backtoList()"
+                    value="Back To List" />
             </form>
         </div>
     </div>
