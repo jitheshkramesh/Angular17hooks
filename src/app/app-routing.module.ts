@@ -28,6 +28,8 @@ import { AncourseComponent } from './animation/ancourse/ancourse.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerTDComponent } from './customer-td/customer-td.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
+import { CustomerEditTdComponent } from './customer-edit-td/customer-edit-td.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -42,6 +44,8 @@ const routes: Routes = [
   { path: 'vehiclelist', component: VehicleShellComponent, canActivate: [AuthGuardService] },
   { path: 'customerR', component: CustomerComponent, canActivate: [AuthGuardService] },
   { path: 'customer', component: CustomerTDComponent, canActivate: [AuthGuardService] },
+  { path: 'customeredit/:id', component: CustomerEditComponent, canActivate: [AuthGuardService] },
+  { path: 'customereditTd/:id', component: CustomerEditTdComponent, canActivate: [AuthGuardService] },
   { path: 'customerlist', component: CustomerListComponent, canActivate: [AuthGuardService] },
   { path: 'signup', component: UserSignUpComponent },
   { path: 'login', component: LoginComponent },
@@ -57,7 +61,7 @@ const routes: Routes = [
       { path: 'Course/:id', component: AncourseComponent }
     ]
   },
-  { path: '**', component: ErrorComponent }
+  { path: '**', component: LoginComponent }
 ];
 
 @NgModule({

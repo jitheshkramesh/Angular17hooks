@@ -1,24 +1,31 @@
 <div class="container">
-    <button type="button" type="submit" class="btn btn-primary me-2"  (click)="AddCustomer()">
+    <button type="button" type="submit" class="btn btn-primary me-2" (click)="AddCustomer()">
         + Add Customer
     </button>
-    <div *ngIf="customers.length>0;else nocustomer">
-        <table id="product">
-            <tr>
-                <th>Id</th>
-                <th>firstName</th>
-                <th>lastName</th>
-                <th>email</th>
-                <th>country</th>
-            </tr>
-            <tr *ngFor="let cust of customers">
-                <td>{{cust.id}}</td>
-                <td>{{cust.firstName}}</td>
-                <td>{{cust.lastName}}</td>
-                <td>{{cust.email}}</td>
-                <td>{{cust.country}}</td>
-            </tr>
-        </table>
+    <div class="shadow" *ngIf="customers.length>0;else nocustomer">
+        <div class="input-group p-4">
+            <table class="table table-striped" id="product">
+                <tr>
+                    <th class="px-2">#</th>
+                    <th class="px-2">firstName</th>
+                    <th class="px-2">lastName</th>
+                    <th class="px-2">email</th>
+                    <th class="px-2">country</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let cust of customers;index as i">
+                    <td class="px-2">{{i + 1}}</td>
+                    <td class="px-2">{{cust.firstName}}</td>
+                    <td class="px-2">{{cust.lastName}}</td>
+                    <td class="px-2">{{cust.email}}</td>
+                    <td class="px-2">{{cust.country}}</td>
+                    <td class="px-2"><button class="btn btn-primary" (click)="EditClick(cust.id)">Edit</button></td>
+                    <td><a routerLink="/customereditTd/{{cust.id}}" class="btn btn-success mt-2">Edit</a></td>
+                </tr>
+            </table>
+        </div>
+
     </div>
     <ng-template #nocustomer>
         <div>

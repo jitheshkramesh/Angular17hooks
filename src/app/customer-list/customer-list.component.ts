@@ -3,12 +3,12 @@ import { ICustomer } from '../interfaces/customer.interface';
 import { Subscription } from 'rxjs';
 import { customerService } from '../services/customer.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './customer-list.component.html',
   styleUrl: './customer-list.component.scss'
 })
@@ -38,5 +38,9 @@ export class CustomerListComponent {
   AddCustomer() {
     console.log('customer add');
     this.router.navigate(['/customer']);
+  }
+
+  EditClick(id: number) {
+    this.router.navigate(['/customeredit/' + id]);
   }
 }

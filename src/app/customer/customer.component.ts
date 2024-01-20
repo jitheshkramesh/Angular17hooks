@@ -1,16 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs'; 
-import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import { customerService } from '../services/customer.service';
 import { ToastrService } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Countries } from '../services/countries';
 
 @Component({
   selector: 'app-customer',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.scss'
 })
@@ -32,7 +33,7 @@ export class CustomerComponent implements OnDestroy {
   subscription: Subscription;
   invalidData: boolean = false;
 
-  countries: string[] = ['USA', 'UK', 'Canada', 'India'];
+  countries = Countries;
   default: string = 'India';
 
 
@@ -92,6 +93,8 @@ export class CustomerComponent implements OnDestroy {
         this.resetForm();
         this.toastr.success('Customer', 'Created successfully');
         //this.resetForm(); 
+      }, err => {
+        this.toastr.success('Error', err);
       })
     } else {
       console.log('Error');

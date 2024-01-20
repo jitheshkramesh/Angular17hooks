@@ -6,6 +6,7 @@ import { customerService } from '../services/customer.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ICustomer } from '../interfaces/customer.interface';
+import { Countries } from '../services/countries';
 
 @Component({
   selector: 'app-customer-td',
@@ -37,7 +38,7 @@ export class CustomerTDComponent {
   subscription: Subscription;
   invalidData: boolean = false;
 
-  countries: string[] = ['USA', 'UK', 'Canada', 'India'];
+  countries = Countries;
   default: string = 'India';
 
   constructor(private service: customerService,
@@ -50,9 +51,11 @@ export class CustomerTDComponent {
       this.subscription = this.service.customerCreation(form.value).subscribe(res => {
         console.log('Created successfully');
         //this.resetForm(form);
-        this.toastr.success('Created successfully', 'Customer');
+        this.toastr.success('Customer', 'Created successfully');
         this.router.navigate(['customerlist']);
         //this.resetForm(); 
+      }, err => {
+        this.toastr.success('Customer', err);
       })
     } else {
       console.log('Error');

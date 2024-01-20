@@ -11,7 +11,7 @@ export class CourseGuardService {
             return true;
         }
         else {
-            this.route.navigate(['']);
+            this.route.navigate(['login']);
             return false;
         }
     }
