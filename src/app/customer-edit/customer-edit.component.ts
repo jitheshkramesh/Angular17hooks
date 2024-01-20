@@ -19,15 +19,15 @@ import { first } from 'rxjs/operators';
 export class CustomerEditComponent implements OnInit, OnDestroy {
 
  // customerForm: FormGroup;
-  firstNameFormControl: FormControl;
-  lastNameFormControl: FormControl;
-  emailFormControl: FormControl;
-  zipcodeFormControl: FormControl;
-  phoneFormControl: FormControl;
-  birthDateFormControl: FormControl;
-  cityFormControl: FormControl;
-  stateFormControl: FormControl;
-  gender: FormControl;
+  // firstNameFormControl: FormControl;
+  // lastNameFormControl: FormControl;
+  // emailFormControl: FormControl;
+  // zipcodeFormControl: FormControl;
+  // phoneFormControl: FormControl;
+  // birthDateFormControl: FormControl;
+  // cityFormControl: FormControl;
+  // stateFormControl: FormControl;
+  // gender: FormControl;
   //countryFormControl: FormControl;
 
   subscription: Subscription;
