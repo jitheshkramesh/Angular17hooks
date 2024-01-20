@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { CustomerInterface } from '../interfaces/customer.interface';
+import { Subscription } from 'rxjs'; 
 import { ActivatedRoute, Router } from '@angular/router';
 import { customerService } from '../services/customer.service';
 import { ToastrService } from 'ngx-toastr';

@@ -1,1 +1,29 @@
-<p>customer-list works!</p>
+<div class="container">
+    <button type="button" type="submit" class="btn btn-primary me-2"  (click)="AddCustomer()">
+        + Add Customer
+    </button>
+    <div *ngIf="customers.length>0;else nocustomer">
+        <table id="product">
+            <tr>
+                <th>Id</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>email</th>
+                <th>country</th>
+            </tr>
+            <tr *ngFor="let cust of customers">
+                <td>{{cust.id}}</td>
+                <td>{{cust.firstName}}</td>
+                <td>{{cust.lastName}}</td>
+                <td>{{cust.email}}</td>
+                <td>{{cust.country}}</td>
+            </tr>
+        </table>
+    </div>
+    <ng-template #nocustomer>
+        <div>
+            <p>{{ errorMessage}}</p>
+        </div>
+    </ng-template>
+
+</div>

@@ -1,5 +1,5 @@
-export interface CustomerInterface {
-    id: number,
+export interface ICustomer {
+    id?: number,
     firstName: string,
     lastName: string,
     email: string,
@@ -12,10 +12,10 @@ export interface CustomerInterface {
     birthDate: Date,
     gender:string,
 
-    createdDate: Date,
-    createdId: number,
-    updatedId: number,
-    updatedDate: Date,
+    createdDate?: Date,
+    createdId?: number,
+    updatedId?: number,
+    updatedDate?: Date,
 
 
 }

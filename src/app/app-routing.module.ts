@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { CoursesComponent } from './courses/courses.component';
-import { ErrorComponent } from './error/error.component'; 
+import { ErrorComponent } from './error/error.component';
 import { CourseGuardService } from 'src/app/shared/course-guard.service';
 import { CanDeactivateGuardService } from 'src/app/shared/candeactivate-guard.service';
 import { courseResolveService } from 'src/app/shared/course-resolve';
@@ -19,37 +19,41 @@ import { HeroParentComponent } from './childView/hero-parent/hero-parent.compone
 import { ProductListComponent } from './product-list/product-list.component';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
-import { AuthGuardService } from 'src/app/shared/auth-guard.service'; 
+import { AuthGuardService } from 'src/app/shared/auth-guard.service';
 import { VehicleShellComponent } from './vehicle/vehicle-shell/vehicle-shell.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { CourselistComponent } from './animation/courselist/courselist.component';
 import { AncourseComponent } from './animation/ancourse/ancourse.component';
 import { CustomerComponent } from './customer/customer.component';
+import { CustomerTDComponent } from './customer-td/customer-td.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   //{ path: '', redirectTo: 'Home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent , canActivate: [AuthGuardService] },
-  { path: 'Aboutus', component: AboutComponent , canActivate: [AuthGuardService] },
-  { path: 'Student', component: StudentComponent , canActivate: [AuthGuardService] },
-  { path: 'StudentList', component: StudentListComponent , canActivate: [AuthGuardService] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
+  { path: 'Aboutus', component: AboutComponent, canActivate: [AuthGuardService] },
+  { path: 'Student', component: StudentComponent, canActivate: [AuthGuardService] },
+  { path: 'StudentList', component: StudentListComponent, canActivate: [AuthGuardService] },
   { path: 'Products', component: ProductListComponent, canActivate: [AuthGuardService] },
   { path: 'admin', component: AdminComponent },
-  { path: 'heroP', component: HeroParentComponent , canActivate: [AuthGuardService] },
-  { path: 'vehiclelist', component: VehicleShellComponent , canActivate: [AuthGuardService] },
-  { path: 'customer', component: CustomerComponent , canActivate: [AuthGuardService] },
+  { path: 'heroP', component: HeroParentComponent, canActivate: [AuthGuardService] },
+  { path: 'vehiclelist', component: VehicleShellComponent, canActivate: [AuthGuardService] },
+  { path: 'customerR', component: CustomerComponent, canActivate: [AuthGuardService] },
+  { path: 'customer', component: CustomerTDComponent, canActivate: [AuthGuardService] },
+  { path: 'customerlist', component: CustomerListComponent, canActivate: [AuthGuardService] },
   { path: 'signup', component: UserSignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'user-login', component: UserLoginComponent },
   { path: 'employees', component: EmployeesComponent, canActivate: [AuthGuardService] },
-  { path: 'rxjs', component: RxjsComponent, canActivate: [AuthGuardService]  },
-  { path: 'register', component: RegisterComponent},
-  { path: 'an-course', component: AncourseComponent, canActivate: [AuthGuardService]  },
+  { path: 'rxjs', component: RxjsComponent, canActivate: [AuthGuardService] },
+  { path: 'register', component: RegisterComponent },
+  { path: 'an-course', component: AncourseComponent, canActivate: [AuthGuardService] },
   { path: 'Contact', component: ContactComponent, canDeactivate: [CanDeactivateGuardService] },
-  { path: 'Courses', component: CoursesComponent, canActivate: [AuthGuardService] , resolve: { courses: courseResolveService } },
+  { path: 'Courses', component: CoursesComponent, canActivate: [AuthGuardService], resolve: { courses: courseResolveService } },
   {
-    path: 'Courses', canActivate: [AuthGuardService] , canActivateChild: [CourseGuardService], children: [
+    path: 'Courses', canActivate: [AuthGuardService], canActivateChild: [CourseGuardService], children: [
       { path: 'Course/:id', component: AncourseComponent }
     ]
   },
