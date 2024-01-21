@@ -7,6 +7,7 @@ import { customerService } from '../services/customer.service';
 import { ToastrService } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Countries } from '../services/countries';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-customer',
@@ -35,10 +36,14 @@ export class CustomerComponent implements OnDestroy {
 
   countries = Countries;
   default: string = 'India';
+  message: string;
 
 
-  constructor(private fb: FormBuilder, private service: customerService, private router: Router, private toastr: ToastrService) {
-    //this.customerForm.controls['country'].setValue(this.default, {onlySelf: true});
+  constructor(private fb: FormBuilder,
+    private service: customerService,
+    private router: Router,
+    private toastr: ToastrService,
+    private notification: NotificationService) {
     this.customerForm = new FormGroup({
       country: new FormControl(null),
       gender: new FormControl('', Validators.required)
@@ -78,7 +83,15 @@ export class CustomerComponent implements OnDestroy {
       phone: this.phoneFormControl,
       birthDate: this.birthDateFormControl,
       gender: this.customerForm.controls['gender']
-    })
+    });
+
+    this.message = 'C-Count : ';
+    this.notification.notificationSubject.subscribe(d=>{
+      this.message = 'C-Count : ' + d;
+    });
+
+    console.log(this.message);
+
   }
 
   get f() {

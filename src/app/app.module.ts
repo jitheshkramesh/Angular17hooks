@@ -57,6 +57,7 @@ import { AncourseComponent } from './animation/ancourse/ancourse.component';
 // import {percentage} from '../shared/percentage.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { NotificationService } from './services/notification.service';
 
 export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
 
@@ -93,7 +94,7 @@ export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
     providers: [AuthService, CourseGuardService,
         CanDeactivateGuardService, courseResolveService,
         StudentService, ProductService, AuthGuardService, VehicleService,
-        CartService,  
+        CartService,  NotificationService,
         { provide: USER_TOKEN, useClass: UserService },
         { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },

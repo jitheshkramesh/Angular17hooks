@@ -3,7 +3,8 @@
         <div class="alert alert-primary text-center">
             <!-- <div class="alert alert-info rounded-4 text-left" *ngIf="invalidData">
                 <div class="alert alert-danger rounded-4">Error Your form values</div>
-            </div> --> 
+            </div> -->
+            <h1>{{message}}</h1>
             <form class="pt-3" [formGroup]="customerForm" (ngSubmit)="onSubmitForm()">
                 <div class="form-group">
                     <label>First Name</label>
@@ -59,16 +60,16 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="m-2" for="gender">Gender</label> 
-                      <input class="m-2" id="male" type="radio" value="m" name="gender" formControlName="gender">
-                      <label for="male">Male</label>
-                    
-                      <input class="m-2" id="female" type="radio" value="f" name="gender" formControlName="gender">
-                      <label for="female">Female</label>
-                   
+                    <label class="m-2" for="gender">Gender</label>
+                    <input class="m-2" id="male" type="radio" value="m" name="gender" formControlName="gender">
+                    <label for="male">Male</label>
+
+                    <input class="m-2" id="female" type="radio" value="f" name="gender" formControlName="gender">
+                    <label for="female">Female</label>
+
                     <input class="m-2" id="female" type="radio" value="n" name="gender" formControlName="gender">
-                    <label for="female">Not Specified</label> 
-                      
+                    <label for="female">Not Specified</label>
+
                     <!-- <div *ngIf="f.gender.touched && f.gender.invalid" class="alert alert-danger">
                         <div *ngIf="f.gender.errors.required">Name is required.</div>
                     </div> -->

@@ -30,6 +30,8 @@ import { CustomerTDComponent } from './customer-td/customer-td.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { CustomerEditTdComponent } from './customer-edit-td/customer-edit-td.component';
+import { CustomerlistObsComponent } from './customerlist-obs/customerlist-obs.component';
+import { PostsComponent } from './posts/posts.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -47,6 +49,8 @@ const routes: Routes = [
   { path: 'customeredit/:id', component: CustomerEditComponent, canActivate: [AuthGuardService] },
   { path: 'customereditTd/:id', component: CustomerEditTdComponent, canActivate: [AuthGuardService] },
   { path: 'customerlist', component: CustomerListComponent, canActivate: [AuthGuardService] },
+  { path: 'customerlistObs', component: CustomerlistObsComponent, canActivate: [AuthGuardService] },
+  { path: 'posts', component: PostsComponent, canActivate: [AuthGuardService] },
   { path: 'signup', component: UserSignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'user-login', component: UserLoginComponent },

@@ -1,0 +1,18 @@
+<div class="grid grid-cols-4 bg-light  rounded-md p-3 flex">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @for (cust of (customers$ | async);track cust;let idx = $index){
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{cust.firstName}}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{cust.lastName}}</h6>
+                    <i class="fa-light fa-pen-to-square">
+                    <p class="card-text">{{cust.email}}</p></i>
+                    <button class="btn btn-primary mb-2" (click)="EditClick(cust.id)">Edit</button>
+                    <a routerLink="/customereditTd/{{cust.id}}" class="btn btn-success mt-2 px-2">Edit</a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { customerService } from '../services/customer.service';
@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ICustomer } from '../interfaces/customer.interface';
 import { Countries } from '../services/countries';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-customer-td',
@@ -18,7 +19,7 @@ import { Countries } from '../services/countries';
   templateUrl: './customer-td.component.html',
   styleUrl: './customer-td.component.scss'
 })
-export class CustomerTDComponent {
+export class CustomerTDComponent implements OnInit {
 
   customer: ICustomer;
 
@@ -40,10 +41,21 @@ export class CustomerTDComponent {
 
   countries = Countries;
   default: string = 'India';
+  message:string;
 
   constructor(private service: customerService,
     private router: Router,
-    private toastr: ToastrService) { this.customer = {} as ICustomer; }
+    private toastr: ToastrService,
+    private notification:NotificationService) { this.customer = {} as ICustomer; }
+
+  ngOnInit(): void {
+    this.message = 'C-Count : ';
+    this.notification.notificationSubject.subscribe(d=>{
+      this.message = 'C-Count : ' + d;
+    });
+
+    console.log(this.message);
+  }
 
   onSubmitForm(form: NgForm) {
 

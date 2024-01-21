@@ -25,8 +25,8 @@ export class AuthGuardService implements CanActivate {
     // }
 
     canActivate(): boolean {
-        // if (localStorage.getItem('token')) return true;
-        if (this.authService.currentUserSignal()) return true;
+        if (localStorage.getItem('token')) return true;
+         if (this.authService.currentUserSignal()) return true;
         return false;
     }
 

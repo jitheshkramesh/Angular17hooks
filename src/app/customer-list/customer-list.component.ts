@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { customerService } from '../services/customer.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -18,11 +19,13 @@ export class CustomerListComponent {
   customers: ICustomer[] = [];
   errorMessage: string;
 
-  constructor(private customerService: customerService, private router: Router) { }
+  constructor(private customerService: customerService, 
+    private router: Router,private notification:NotificationService) { }
 
   ngOnInit(): void {
     this.subscription = this.customerService.getCustomers().subscribe((cust: ICustomer[]) => {
       this.customers = cust;
+      this.notification.sendNotification(this.customers.length);
       console.log(this.customers);
     },
       (err) => {
