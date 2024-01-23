@@ -1,4 +1,4 @@
-import { Injectable, WritableSignal, computed, effect, signal } from "@angular/core";
+import { Injectable, computed, effect, signal } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { userInterface } from "src/app/interfaces/login.interface";
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -11,7 +11,7 @@ export class AuthService {
     loggedIn = signal<boolean>(false);
     loggedIn$ = new BehaviorSubject<boolean>(false);
     // currentUserSignal = WritableSignal<userInterface | undefined | null>(undefined);
-    public currentUserSignal: WritableSignal<userInterface | undefined | null> = signal<userInterface | undefined | null>(null);
+    currentUserSignal = signal<userInterface | undefined | null>(undefined);
     user: userInterface;
 
     currentUserSignalComputed = computed(() => {
@@ -25,7 +25,7 @@ export class AuthService {
     currentUserSignalEff = effect(() => {
         console.log('Latest currentUserSignal :' + this.currentUserSignal()?.userName);
 
-       //  if (this.currentUserSignal() == undefined) this.extractInfoJwt();
+        //  if (this.currentUserSignal() == undefined) this.extractInfoJwt();
 
         console.log('Latest currentUserSignal :' + this.currentUserSignal()?.userName);
         console.log('Latest loggedIn :' + this.loggedIn());
