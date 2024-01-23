@@ -10,7 +10,7 @@
   </div>
 </div> -->
 <div class="main-container">
-<app-header></app-header>
+<app-header *ngIf="showHead"></app-header>
 <router-outlet></router-outlet>  
 <div class="spinner" *ngIf="displayLoadingIndicator"></div>
 </div>

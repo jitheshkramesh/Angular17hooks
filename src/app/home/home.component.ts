@@ -23,10 +23,10 @@ export class HomeComponent implements OnInit {
    });
 
     //this.authenticated = this.authService.isAuthenticated();
-    console.log('token : ' +localStorage.getItem('token'));
+    //console.log('token : ' +localStorage.getItem('token'));
     console.log('HeaderComponent ngOnInit : authenticated : ' + this.authenticated);
     
-    console.log('token : ' + this.token);
+    //console.log('token : ' + this.token);
     console.log('authenticated : ' + this.authenticated);
   }
 

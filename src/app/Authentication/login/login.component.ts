@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { userInterface } from 'src/app/interfaces/login.interface';
 import { AuthenticationServices } from 'src/app/services/authentication.services';
@@ -9,10 +10,10 @@ import { AuthService } from 'src/app/shared/auth.services';
 
 @Component({
   selector: 'app-login',
-  standalone:true,
+  standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports:[FormsModule,ReactiveFormsModule,
+  imports: [FormsModule, ReactiveFormsModule,
     CommonModule]
 })
 export class LoginComponent implements OnInit {
@@ -24,8 +25,11 @@ export class LoginComponent implements OnInit {
   result: any;
   user: userInterface;
 
-  constructor(private fb: FormBuilder, private router: Router,
-    private service: AuthenticationServices, private authService: AuthService) { }
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private service: AuthenticationServices,
+    private authService: AuthService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -47,17 +51,23 @@ export class LoginComponent implements OnInit {
         this.result = res;
         this.authService.logIn();
         //this.authenticated = this.authService.isAuthenticated();
-        localStorage.setItem('token', this.result.token); 
+        localStorage.setItem('token', this.result.token);
+        localStorage.setItem('userName', this.userNameFormControl.value);
         this.user = { userName: this.userNameFormControl.value };
 
         this.authService.currentUserSignal.set(this.user);
 
+        this.toastr.success('Logined successfully','Login Page');
+
         console.log('login currentUserSignal = ' + this.authService.currentUserSignal());
 
         this.router.navigate(['home']);
+      }, err => {
+        this.toastr.error('Error', 'Invalid credential');
       });
     } else {
       this.invalidData = true;
+      this.toastr.error('Error', 'Server error');
     }
   }
 

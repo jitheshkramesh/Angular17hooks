@@ -3,11 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.services';
 import { subscribeService } from '../services/subscribe.services';
 import { NotificationService } from '../services/notification.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
 
@@ -17,33 +18,54 @@ export class HeaderComponent {
   authenticated: boolean = false;
   authService = inject(AuthService);
   message: string;
+  userName: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private subservice: subscribeService,
-    private notification: NotificationService
-    ) {
+    private notification: NotificationService,
+    private toastr: ToastrService
+  ) {
+
+
   }
 
   ngOnInit(): void {
     //this.authenticated = this.authService.isAuthenticated();
     console.log('Header ngOnInit() = ' + this.authenticated);
     console.log('Header currentUserSignal = ' + this.authService.currentUserSignal());
-    this.notification.notificationSubject.subscribe(d=>{
-      this.message = 'C-Count : ' + d;
+
+
+    this.notification.notificationSubject.subscribe((d) => {
+      if (Number(d) > 0) {
+        localStorage.setItem('ccount', d);
+        this.message = 'C-Count : ' + d;
+      }
     });
- 
-    this.authService.loggedIn$.subscribe(c=> {
+
+
+    this.authService.loggedIn$.subscribe(c => {
       this.authenticated = c;
       console.log('isAuthenticated : ' + this.authenticated);
-   });
+    });
 
     //this.authenticated = this.authService.isAuthenticated();
-    console.log('token : ' +localStorage.getItem('token'));
+    console.log('token : ' + localStorage.getItem('token'));
     console.log('HeaderComponent ngOnInit : authenticated : ' + this.authenticated);
 
+    this.userName = this.authService.currentUserSignal() ? this.authService.currentUserSignal()?.userName : localStorage.getItem('userName')
+    if (this.authService.currentUserSignal()) {
+      this.userName = this.authService.currentUserSignal()?.userName;
+
+    }
+    else {
+      this.userName = localStorage.getItem('userName');
+      this.message = 'C-Count : ' + localStorage.getItem('ccount');
+    }
+    console.log('username changed : ' + this.userName);
   }
+
 
   login() {
     // this.authService.logIn();
@@ -54,6 +76,7 @@ export class HeaderComponent {
   logout() {
     this.authService.logOut();
     this.authenticated = this.authService.isAuthenticated();
+    this.toastr.info('Logout successfully', 'Home');
     this.router.navigate(['login']);
   }
 

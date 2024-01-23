@@ -9,8 +9,20 @@ import { ActivatedRoute, NavigationEnd, NavigationStart, Router, Event, Navigati
 export class AppComponent implements OnInit {
 
   displayLoadingIndicator: boolean = false;
-  
+  showHead: boolean = false;
+
   constructor(private router: Router) {
+    // on route change to '/login', set the variable showHead to false
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        if (event['url'] == '/login' || event['url'] == '/register') {
+          this.showHead = false;
+        } else {
+          // console.log("NU")
+          this.showHead = true;
+        }
+      }
+    });
   }
 
   ngOnInit(): void {

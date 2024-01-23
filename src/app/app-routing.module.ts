@@ -48,8 +48,18 @@ const routes: Routes = [
   { path: 'customer', component: CustomerTDComponent, canActivate: [AuthGuardService] },
   { path: 'customeredit/:id', component: CustomerEditComponent, canActivate: [AuthGuardService] },
   { path: 'customereditTd/:id', component: CustomerEditTdComponent, canActivate: [AuthGuardService] },
-  { path: 'customerlist', component: CustomerListComponent, canActivate: [AuthGuardService] },
-  { path: 'customerlistObs', component: CustomerlistObsComponent, canActivate: [AuthGuardService] },
+  { path: 'customerlistT', component: CustomerListComponent, canActivate: [AuthGuardService] },
+  {
+    path: 'customerlist',
+    canActivate: [AuthGuardService],
+    loadComponent: () => import("./customer-list/customer-list.component").then(m => m.CustomerListComponent)
+  },
+  {
+    path: 'customerlistObs',
+    canActivate: [AuthGuardService],
+    loadComponent: () => import("./customerlist-obs/customerlist-obs.component").then(m => m.CustomerlistObsComponent)
+  },
+  //{ path: 'customerlistObs', component: CustomerlistObsComponent, canActivate: [AuthGuardService] },
   { path: 'posts', component: PostsComponent, canActivate: [AuthGuardService] },
   { path: 'signup', component: UserSignUpComponent },
   { path: 'login', component: LoginComponent },

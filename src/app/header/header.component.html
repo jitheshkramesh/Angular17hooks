@@ -1,36 +1,54 @@
-<div class="nav-container">
-  <ul>
-    <li [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="'home'">Home</a></li>
-    <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'Courses'">Courses</a></li>
+<div class="fixed-top">
+  <div class="nav-container">
+    <ul>
+      <li [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="'home'">Home</a></li>
+      <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'Courses'">Courses</a></li>
       <li [routerLinkActive]="'active'"><a [routerLink]="'Student'">Students</a></li>
       <li [routerLinkActive]="'active'"><a [routerLink]="'StudentList'">StudentList</a></li> -->
-    <li [routerLinkActive]="'active'"><a [routerLink]="'Products'">Products</a></li>
-    <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'Contact'">Contact</a></li> -->
-    <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'heroP'">HeroP</a></li> -->
-    <li [routerLinkActive]="'active'"><a [routerLink]="'vehiclelist'">Vehicles</a></li>
-    <li [routerLinkActive]="'active'"><a [routerLink]="'employees'">Employees</a></li>
-    <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'Aboutus'">About</a></li> -->
-    <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'user-login'">user-Login</a></li>  -->
-    <li [routerLinkActive]="'active'"><a [routerLink]="'rxjs'">Rxjs</a></li>
-    <li [routerLinkActive]="'active'"><a [routerLink]="'an-course'">An-Course</a></li>
-    <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'customer'">Customer</a></li>  -->
-    <li [routerLinkActive]="'active'"><a [routerLink]="'customerlist'">Customer List</a></li>
-    <li [routerLinkActive]="'active'"><a [routerLink]="'customerlistObs'">Customer Obs</a></li>
-    <li [routerLinkActive]="'active'"><a [routerLink]="'posts'">Posts</a></li>
-    <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'admin'">Admin</a></li>
+      <li [routerLinkActive]="'active'"><a [routerLink]="'Products'">Products</a></li>
+      <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'Contact'">Contact</a></li> -->
+      <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'heroP'">HeroP</a></li> -->
+      <li [routerLinkActive]="'active'"><a [routerLink]="'vehiclelist'">Vehicles</a></li>
+      <li [routerLinkActive]="'active'"><a [routerLink]="'employees'">Employees</a></li>
+      <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'Aboutus'">About</a></li> -->
+      <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'user-login'">user-Login</a></li>  -->
+      <li [routerLinkActive]="'active'"><a [routerLink]="'rxjs'">Rxjs</a></li>
+      <li [routerLinkActive]="'active'"><a [routerLink]="'an-course'">An-Course</a></li>
+      <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'customer'">Customer</a></li>  -->
+      <li [routerLinkActive]="'active'"><a [routerLink]="'customerlist'">Customer List</a></li>
+      <li [routerLinkActive]="'active'"><a [routerLink]="'customerlistObs'">Customer Obs</a></li>
+      <li [routerLinkActive]="'active'"><a [routerLink]="'posts'">Posts</a></li>
+      <!-- <li [routerLinkActive]="'active'"><a [routerLink]="'admin'">Admin</a></li>
       <li [routerLinkActive]="'active'"><a [routerLink]="'login'">Login</a></li> -->
-    <span style="float: right;color: whitesmoke;"> <p>{{message}}</p>
+
       <!-- <li *ngIf="!authenticated"><a [routerLink]="'register'">Register</a></li>
         <li *ngIf="!authenticated"><a [routerLink]="'signup'">Sign-up</a></li> -->
       <!-- <li (click)="login()" *ngIf="!authenticated"><a>Login</a></li>
         <li (click)="logout()" *ngIf="authenticated"><a>Logout</a></li> -->
-      <li (click)="login()" *ngIf="!authService.currentUserSignal()"><a>Login</a></li>
-      <li (click)="logout()" *ngIf="authService.currentUserSignal()">
-        <p>{{authService.currentUserSignal()?.userName}}</p>
-        <!-- <p>{{message}}</p> -->
-        <a>Logout</a>
+      <!-- <li [routerLinkActive]="'active'" (click)="login()" *ngIf="!authService.currentUserSignal()"><a style="float: right;color: whitesmoke;">Login</a></li>
+      <li [routerLinkActive]="'active'" (click)="logout()" *ngIf="authService.currentUserSignal()" style="float: right;color: whitesmoke;">
+        {{userName}}
       </li>
+      <li [routerLinkActive]="'active'" (click)="logout()" *ngIf="authService.currentUserSignal()">
+        <a style="float: right;color: whitesmoke;">Logout</a>
+      </li>
+      <li (click)="logout()" *ngIf="authService.currentUserSignal()" style="float: right;color: whitesmoke;">
+        <a>{{message}}</a>
+      </li> -->
+
+      <li [routerLinkActive]="'active'" (click)="login()" *ngIf="!userName"><a style="float: right;color: whitesmoke;">Login</a></li>
+      <li [routerLinkActive]="'active'" (click)="logout()" *ngIf="userName" style="float: right;color: whitesmoke;">
+        {{userName}}
+      </li>
+      <li [routerLinkActive]="'active'" (click)="logout()" *ngIf="userName">
+        <a style="float: right;color: whitesmoke;">Logout</a>
+      </li>
+      <li (click)="logout()" *ngIf="userName" style="float: right;color: whitesmoke;">
+        <a>{{message}}</a>
+      </li>
+
       <!-- <button class="header-button" (click)="subscribe()">Subscribe</button> -->
-    </span>
-  </ul>
+
+    </ul>
+  </div>
 </div>

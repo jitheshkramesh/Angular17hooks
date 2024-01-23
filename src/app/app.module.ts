@@ -58,6 +58,7 @@ import { AncourseComponent } from './animation/ancourse/ancourse.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { NotificationService } from './services/notification.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
 
@@ -99,7 +100,7 @@ export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
         { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
         provideHttpClient(withInterceptors([authInterceptor])),
-
+        {provide: LocationStrategy, useClass: HashLocationStrategy}
     ],
     bootstrap: [AppComponent],
     imports: [
@@ -114,7 +115,7 @@ export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
         EffectsModule.forRoot(AuthenticationEffects),
         NgFor, NgIf, DecimalPipe,
         ToastrModule.forRoot(),
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
     ],
 })
 export class AppModule { }

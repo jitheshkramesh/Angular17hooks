@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { UserService } from '../services/user.service'; 
 import { USER_TOKEN } from '../app.module';
 
@@ -8,9 +8,10 @@ import { USER_TOKEN } from '../app.module';
   styleUrls: ['./admin.component.scss'] 
 })
 export class AdminComponent {
-  constructor(@Inject(USER_TOKEN) private userService: UserService) { 
+  userService = inject(USER_TOKEN);
+  // constructor(@Inject(USER_TOKEN) private userService: UserService) { 
 
-    }
+  //   }
   
     name: string = '';
     gender: string = 'Male';
