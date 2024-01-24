@@ -3,7 +3,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: inherit !important;
     background-color: #333;
   }
   
@@ -25,4 +25,7 @@ ul {
 
   .active{
     background-color: gray;
+  }
+  .panel.panel-default{
+    overflow: inherit !important;
   }

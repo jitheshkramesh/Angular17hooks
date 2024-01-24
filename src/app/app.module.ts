@@ -24,11 +24,8 @@ import { StudentListComponent } from './student/student-list/student-list.compon
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserSignUpComponent } from './user/user-sign-up/user-sign-up.component';
 import { HeaderComponent } from './header/header.component';
-import { subscribeService } from './services/subscribe.services';
-import { UserlistComponent } from './admin/userlist/userlist.component';
-import { AdminComponent } from './admin/admin.component';
-import { UserService } from './services/user.service';
-import { UserDetailsComponent } from './admin/user-details/user-details.component';
+import { subscribeService } from './services/subscribe.services'; 
+import { UserService } from './services/user.service'; 
 import { LoggerService } from './services/logger.service';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { StoreModule } from '@ngrx/store';
@@ -76,10 +73,7 @@ export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
         StudentListComponent,
         UserRegisterComponent,
         UserSignUpComponent,
-        HeaderComponent,
-        UserlistComponent,
-        AdminComponent,
-        UserDetailsComponent,
+        HeaderComponent, 
         UserLoginComponent,
         HeroParentComponent,
         HeroChildComponent,

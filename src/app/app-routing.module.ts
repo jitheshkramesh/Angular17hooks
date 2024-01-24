@@ -11,9 +11,7 @@ import { courseResolveService } from 'src/app/shared/course-resolve';
 import { StudentComponent } from './student/student.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
-import { UserSignUpComponent } from './user/user-sign-up/user-sign-up.component';
-import { UserlistComponent } from './admin/userlist/userlist.component';
-import { AdminComponent } from './admin/admin.component';
+import { UserSignUpComponent } from './user/user-sign-up/user-sign-up.component'; 
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { HeroParentComponent } from './childView/hero-parent/hero-parent.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -40,8 +38,7 @@ const routes: Routes = [
   { path: 'Aboutus', component: AboutComponent, canActivate: [AuthGuardService] },
   { path: 'Student', component: StudentComponent, canActivate: [AuthGuardService] },
   { path: 'StudentList', component: StudentListComponent, canActivate: [AuthGuardService] },
-  { path: 'Products', component: ProductListComponent, canActivate: [AuthGuardService] },
-  { path: 'admin', component: AdminComponent },
+  { path: 'Products', component: ProductListComponent, canActivate: [AuthGuardService] }, 
   { path: 'heroP', component: HeroParentComponent, canActivate: [AuthGuardService] },
   { path: 'vehiclelist', component: VehicleShellComponent, canActivate: [AuthGuardService] },
   { path: 'customerR', component: CustomerComponent, canActivate: [AuthGuardService] },

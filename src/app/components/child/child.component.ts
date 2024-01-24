@@ -37,7 +37,7 @@ AfterViewInit, AfterViewChecked {
 
   ngDoCheck(): void {
     console.log('ngDoCheck');
-    this.changeLog.push(`ngDoCheck : ${this.numbers.toString()}`);
+    this.changeLog.push(`ngDoCheck : ${this.numbers}`);
   }
 
   ngAfterContentInit(): void {
