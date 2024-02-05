@@ -1,5 +1,5 @@
 import { InjectionToken, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -56,6 +56,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { NotificationService } from './services/notification.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MusicService } from './services/music.service';
+import { MusicComponent } from './music/music.component';
 
 export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
 
@@ -84,17 +86,19 @@ export const USER_TOKEN = new InjectionToken<UserService>('USER_SERVICE');
         RxjsComponent,
         EmployeesComponent,
         AncourseComponent,
-        CourselistComponent
+        CourselistComponent,
+        MusicComponent
     ],
     providers: [AuthService, CourseGuardService,
         CanDeactivateGuardService, courseResolveService,
         StudentService, ProductService, AuthGuardService, VehicleService,
-        CartService,  NotificationService,
+        CartService,  NotificationService,MusicService,
         { provide: USER_TOKEN, useClass: UserService },
         { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
         provideHttpClient(withInterceptors([authInterceptor])),
-        {provide: LocationStrategy, useClass: HashLocationStrategy}
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
+        provideClientHydration()
     ],
     bootstrap: [AppComponent],
     imports: [

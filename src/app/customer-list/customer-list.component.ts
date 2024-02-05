@@ -25,8 +25,7 @@ export class CustomerListComponent {
   ngOnInit(): void {
     this.subscription = this.customerService.getCustomers().subscribe((cust: ICustomer[]) => {
       this.customers = cust;
-      this.notification.sendNotification(this.customers.length);
-      console.log(this.customers);
+      this.notification.sendNotification(this.customers.length); 
     },
       (err) => {
         this.errorMessage = err.message + "Internal server issue";
@@ -38,8 +37,7 @@ export class CustomerListComponent {
     this.subscription && this.subscription.unsubscribe();
   }
 
-  AddCustomer() {
-    console.log('customer add');
+  AddCustomer() { 
     this.router.navigate(['/customer']);
   }
 

@@ -1,8 +1,8 @@
-<div class="container">
+<div>
     <button type="button" type="submit" class="btn btn-primary me-2" (click)="AddCustomer()">
         + Add Customer
     </button>
-    <div class="shadow" *ngIf="customers.length>0;else nocustomer">
+    <div class="container shadow" *ngIf="customers.length>0;else nocustomer">
         <div class="input-group p-4">
             <table class="table table-striped" id="product">
                 <tr>

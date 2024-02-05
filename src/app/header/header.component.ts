@@ -32,9 +32,7 @@ export class HeaderComponent {
   }
 
   ngOnInit(): void {
-    //this.authenticated = this.authService.isAuthenticated();
-    console.log('Header ngOnInit() = ' + this.authenticated);
-    console.log('Header currentUserSignal = ' + this.authService.currentUserSignal());
+    //this.authenticated = this.authService.isAuthenticated(); 
 
 
     this.notification.notificationSubject.subscribe((d) => {
@@ -46,13 +44,9 @@ export class HeaderComponent {
 
 
     this.authService.loggedIn$.subscribe(c => {
-      this.authenticated = c;
-      console.log('isAuthenticated : ' + this.authenticated);
+      this.authenticated = c; 
     });
-
-    //this.authenticated = this.authService.isAuthenticated();
-    console.log('token : ' + localStorage.getItem('token'));
-    console.log('HeaderComponent ngOnInit : authenticated : ' + this.authenticated);
+ 
 
     this.userName = this.authService.currentUserSignal() ? this.authService.currentUserSignal()?.userName : localStorage.getItem('userName')
     if (this.authService.currentUserSignal()) {

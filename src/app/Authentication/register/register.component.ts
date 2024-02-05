@@ -48,8 +48,7 @@ export class RegisterComponent {
     })
   }
 
-  onSubmitForm() {
-    console.log(this.userForm);
+  onSubmitForm() { 
     if (this.userForm.valid) {
       this.subscription = this.service.userRegister(this.userForm.value).subscribe(res => {
         this.toastr.success('Please contact admin approval', 'Registration successfully');

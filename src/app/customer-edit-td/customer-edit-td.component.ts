@@ -36,14 +36,11 @@ export class CustomerEditTdComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log('edit id is :' + id);
+    const id = this.route.snapshot.paramMap.get('id'); 
 
     this.subscription = this.service.getCustomerById(Number(id)).pipe(first()).subscribe((res: ICustomer) => {
       this.customer = res;
-      // this.customer.birthDate =new Date(this.datePipe.transform(this.customer.birthDate, 'yyyy-MM-dd'));
-      console.log('Customer detail is :');
-      console.log(res);
+      // this.customer.birthDate =new Date(this.datePipe.transform(this.customer.birthDate, 'yyyy-MM-dd')); 
     }, err => {
       this.toastr.error('Customer', 'Error by Id');
     });
@@ -75,8 +72,7 @@ export class CustomerEditTdComponent implements OnInit, OnDestroy {
       }, err => {
         this.toastr.success('Customer', err);
       })
-    } else {
-      console.log('Error');
+    } else { 
       this.toastr.error('Customer', 'Error');
       this.invalidData = true;
     }

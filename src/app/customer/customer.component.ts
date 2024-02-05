@@ -89,8 +89,7 @@ export class CustomerComponent implements OnDestroy {
     this.notification.notificationSubject.subscribe(d=>{
       this.message = 'C-Count : ' + d;
     });
-
-    console.log(this.message);
+ 
 
   }
 
@@ -101,16 +100,14 @@ export class CustomerComponent implements OnDestroy {
   onSubmitForm() {
     console.log(this.customerForm);
     if (this.customerForm.valid) {
-      this.subscription = this.service.customerCreation(this.customerForm.value).subscribe(res => {
-        console.log('Created successfully');
+      this.subscription = this.service.customerCreation(this.customerForm.value).subscribe(res => { 
         this.resetForm();
         this.toastr.success('Customer', 'Created successfully');
         //this.resetForm(); 
       }, err => {
         this.toastr.success('Error', err);
       })
-    } else {
-      console.log('Error');
+    } else { 
       this.toastr.error('Customer', 'Error');
       this.invalidData = true;
     }

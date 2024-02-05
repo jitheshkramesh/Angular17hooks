@@ -14,16 +14,14 @@ export class AuthService {
     currentUserSignal = signal<userInterface | undefined | null>(undefined);
     user: userInterface;
 
-    currentUserSignalComputed = computed(() => {
-        console.log('Latest currentUserSignalComputed :');
+    currentUserSignalComputed = computed(() => { 
 
         // this.currentUserSignal()
 
         if (this.currentUserSignal() == undefined) this.extractInfoJwt();
     });
 
-    currentUserSignalEff = effect(() => {
-        console.log('Latest currentUserSignal :' + this.currentUserSignal()?.userName);
+    currentUserSignalEff = effect(() => { 
 
         //  if (this.currentUserSignal() == undefined) this.extractInfoJwt();
 

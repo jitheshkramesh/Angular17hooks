@@ -60,8 +60,7 @@ export class CustomerTDComponent implements OnInit {
   onSubmitForm(form: NgForm) {
 
     if (form.valid) {
-      this.subscription = this.service.customerCreation(form.value).subscribe(res => {
-        console.log('Created successfully');
+      this.subscription = this.service.customerCreation(form.value).subscribe(res => { 
         //this.resetForm(form);
         this.toastr.success('Customer', 'Created successfully');
         this.router.navigate(['customerlist']);

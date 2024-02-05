@@ -65,14 +65,12 @@ export class CustomerEditComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log('edit id is :' + id);
+    const id = this.route.snapshot.paramMap.get('id'); 
 
 
 
 
     this.subscription = this.service.getCustomerById(Number(id)).pipe(first()).subscribe((res: any) => {
-      console.log(res['firstName']);
       this.editcustomerForm = new FormGroup({
         firstNameFormControl: new FormControl(res['firstName']),
         lastNameFormControl:  new FormControl(res['lastName']),
@@ -95,9 +93,7 @@ export class CustomerEditComponent implements OnInit, OnDestroy {
       // this.customerForm = this.fb.group({
       //   firstName: res.firstName
       // })
-      //this.customerForm.controls['firstName'].setValue(res.firstName);
-      console.log('Customer detail is :');
-      console.log( this.editcustomerForm.value );
+      //this.customerForm.controls['firstName'].setValue(res.firstName); 
     }, err => {
       this.toastr.error('Customer', 'Error by Id');
     });
@@ -144,8 +140,7 @@ export class CustomerEditComponent implements OnInit, OnDestroy {
       }, err => {
         this.toastr.error('Error', err);
       })
-    } else {
-      console.log('Error');
+    } else { 
       this.toastr.error('Customer', 'Error');
       this.invalidData = true;
     }

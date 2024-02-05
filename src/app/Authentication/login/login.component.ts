@@ -43,8 +43,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onSubmitForm() {
-    console.log(this.userForm);
+  onSubmitForm() { 
     if (this.userForm.valid) {
       this.subscription = this.service.userLogin(this.userForm.value).subscribe(res => {
         //this.toastr.success('Please contact admin approval', 'Registration successfully');
@@ -57,9 +56,7 @@ export class LoginComponent implements OnInit {
 
         this.authService.currentUserSignal.set(this.user);
 
-        this.toastr.success('Logined successfully','Login Page');
-
-        console.log('login currentUserSignal = ' + this.authService.currentUserSignal());
+        this.toastr.success('Logined successfully','Login Page'); 
 
         this.router.navigate(['home']);
       }, err => {
